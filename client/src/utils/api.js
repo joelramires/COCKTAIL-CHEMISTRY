@@ -22,8 +22,8 @@ export const getRandomCocktail = () => {
     }
   })
 }
-export const getRandomCocktail = () => {
-  return axios.get("https://the-cocktail-db.p.rapidapi.com/random.php", {
+export const getChosenCocktail = () => {
+  return axios.get("https://the-cocktail-db.p.rapidapi.com/lookup.php?i=11007", {
     headers: {
       "X-RapidAPI-Key": "7fc686e589msh8869a75c330f332p12602bjsn7bb45b322900",
       "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com"
@@ -35,5 +35,6 @@ export default {
   getUserProfile,
   loginInfo,
   registerInfo,
-  getRandomCocktail
+  getRandomCocktail,
+  getChosenCocktail
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginForm from './pages/Form'
 import RandomCocktail from './pages/RandomCocktail';
+import ChosenCocktail from './pages/ChosenCocktail'
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <React.Fragment>
     <LoginForm />
     <RandomCocktail/>
+    <ChosenCocktail/>
     </React.Fragment>
   );
 }
