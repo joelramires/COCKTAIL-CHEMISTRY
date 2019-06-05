@@ -10,6 +10,8 @@ function LoginForm() {
     setActiveForm(formName);
   }
 
+  
+
   return (
     <React.Fragment>
       <div className="col-12 col-md-4">
@@ -32,7 +34,7 @@ function LoginForm() {
               {activeForm === "login" ? (
                 <Login activeForm={activeForm}/>
               ) : (
-                  <Signup activeForm={activeForm} />
+                  <Signup activeForm={activeForm} setActiveForm={setActiveForm}/>
                 )}
 
             </div>
