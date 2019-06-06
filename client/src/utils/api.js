@@ -22,8 +22,8 @@ export const getRandomCocktail = () => {
     }
   })
 }
-export const getChosenCocktail = () => {
-  return axios.get("https://the-cocktail-db.p.rapidapi.com/lookup.php?i=11007", {
+export const getChosenCocktail = (drinkId) => {
+  return axios.get(`https://the-cocktail-db.p.rapidapi.com/lookup.php?i=${drinkId}`, {
     headers: {
       "X-RapidAPI-Key": "7fc686e589msh8869a75c330f332p12602bjsn7bb45b322900",
       "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com"
@@ -31,10 +31,26 @@ export const getChosenCocktail = () => {
   })
 }
 
+export const getCocktailSearch = (UserInput) => {
+  return axios.get("https://the-cocktail-db.p.rapidapi.com/search.php?s="+UserInput, {
+    headers: {
+      "X-RapidAPI-Key": "7fc686e589msh8869a75c330f332p12602bjsn7bb45b322900",
+      "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com"
+    }
+  })
+}
+
+
+
+
+
+
 export default {
   getUserProfile,
   loginInfo,
   registerInfo,
   getRandomCocktail,
-  getChosenCocktail
+  getChosenCocktail,
+  getCocktailSearch
+
 };

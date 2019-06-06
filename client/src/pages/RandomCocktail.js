@@ -32,6 +32,13 @@ function RandomCocktail() {
           return entry
         }
       }).map(ingredient => ingredient[1]);
+
+      cocktailDataObj.measurements = Object.entries(drink).filter(entry => {
+        if (entry[0].includes("Measure") && entry[1] !== 0) {
+          return entry
+        } 
+      }).map(measurement => measurement[1]);
+
       console.log(cocktailDataObj);
       setCocktailDataObj(cocktailDataObj);
     })
@@ -49,9 +56,9 @@ function RandomCocktail() {
             Instructions: {cocktailDataObj.instructions}<br/><br/>
             Ingredients:<br/>
             <ul className="list-group list-group-flush">
-              {cocktailDataObj.ingredients.map(ingredient => {
+            {cocktailDataObj.ingredients.map((ingredient, index) => {
                 return (
-                  <li key={ingredient} className="list-group-item">{ingredient}</li>
+                  <li key={ingredient} className="list-group-item">{cocktailDataObj.measurements[index] ? `${cocktailDataObj.measurements[index]} - ` : "" }{ingredient}</li>
                 )
               })}
             </ul>
