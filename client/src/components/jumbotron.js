@@ -4,7 +4,7 @@ import React from 'react'
 
 
 function Jumbotron() {
-const imgUrl = "images/cocktailBg4.jpg"
+const imgUrl = "/images/cocktailBg4.jpg"
 const style={
   bg:{
     backgroundImage: "url(" + imgUrl + ")",

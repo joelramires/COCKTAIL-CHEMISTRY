@@ -6,7 +6,9 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/auth-uploads';
 mongoose.Promise = Promise;

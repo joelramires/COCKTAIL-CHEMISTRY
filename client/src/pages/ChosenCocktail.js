@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getChosenCocktail } from '../utils/api';
 
-function ChosenCocktail() {
+function ChosenCocktail(props) {
   const [cocktailDataObj, setCocktailDataObj] = useState({
     name: "",
     image: "",
@@ -10,12 +10,16 @@ function ChosenCocktail() {
     ingredients: []
   });
 
+  console.log('what');
+
   useEffect(() => {
-    handleGetChosenCocktail();
+    console.log("hi there!")
+    console.log(props);
+    handleGetChosenCocktail(props.match.params.id || "");
   }, []);
 
-  function handleGetChosenCocktail() {
-    getChosenCocktail()
+  function handleGetChosenCocktail(drinkID) {
+    getChosenCocktail(drinkID)
       .then(({ data: cocktailData }) => {
         console.log(cocktailData)
         const drink = cocktailData.drinks[0];
@@ -46,7 +50,7 @@ function ChosenCocktail() {
 
   return (
     <React.Fragment>
-      <div className="col-12 col-md-4">
+      <div className="col-12 col-md-6">
         <div className="card">
           <img class="card-img-top" src={cocktailDataObj.image} alt="Card image cap" />
           <div className="card-body">
@@ -69,5 +73,5 @@ function ChosenCocktail() {
   )
 }
 
-export default ChosenCocktail
+export default ChosenCocktail;
 

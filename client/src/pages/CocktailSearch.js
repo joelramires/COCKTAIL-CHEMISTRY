@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getCocktailSearch, getChosenCocktail } from '../utils/api';
 
 function CocktailSearch() {
@@ -37,28 +38,28 @@ function CocktailSearch() {
   // handle search for single drink
   function handleSearchById(drinkId) {
     getChosenCocktail(drinkId)
-      .then(({data: cocktailData}) => {
+      .then(({ data: cocktailData }) => {
         const drink = cocktailData.drinks[0];
-      const cocktailDataObj = {};
-      cocktailDataObj.name = drink.strDrink;
-      cocktailDataObj.image = drink.strDrinkThumb;
-      cocktailDataObj.glassType = drink.strGlass;
-      cocktailDataObj.instructions = drink.strInstructions;
+        const cocktailDataObj = {};
+        cocktailDataObj.name = drink.strDrink;
+        cocktailDataObj.image = drink.strDrinkThumb;
+        cocktailDataObj.glassType = drink.strGlass;
+        cocktailDataObj.instructions = drink.strInstructions;
 
-      cocktailDataObj.ingredients = Object.entries(drink).filter(entry => {
-        if (entry[0].includes("Ingredient") && entry[1] !== "") {
-          return entry
-        }
-      }).map(ingredient => ingredient[1]);
+        cocktailDataObj.ingredients = Object.entries(drink).filter(entry => {
+          if (entry[0].includes("Ingredient") && entry[1] !== "") {
+            return entry
+          }
+        }).map(ingredient => ingredient[1]);
 
-      cocktailDataObj.measurements = Object.entries(drink).filter(entry => {
-        if (entry[0].includes("Measure") && entry[1] !== 0) {
-          return entry
-        } 
-      }).map(measurement => measurement[1]);
+        cocktailDataObj.measurements = Object.entries(drink).filter(entry => {
+          if (entry[0].includes("Measure") && entry[1] !== 0) {
+            return entry
+          }
+        }).map(measurement => measurement[1]);
 
-      console.log(cocktailDataObj);
-      setCocktailDataObj(cocktailDataObj);
+        console.log(cocktailDataObj);
+        setCocktailDataObj(cocktailDataObj);
       })
   }
 
@@ -77,25 +78,25 @@ function CocktailSearch() {
       </div>
       <div className="col-12 col-md-6">
         <div className="row">
-        {/* DRINK LIST GOES HERE */}
-        {drinkArr.map(drink => {
-          return (
-            <div className="col-12 col-md-">
-              <div className="card" key={drink.idDrink}>
-              <img class="card-img-top" src={drink.strDrinkThumb} alt="Card image cap" />
-              <div className="card-body">
-                <h2>Name: {drink.strDrink}</h2><br />
-                ID: {drink.idDrink}
-                <button onClick={() => {handleSearchById(drink.idDrink)}} className="btn btn-block">
-                  Get Ingredients / More Info
-                </button>
+          {/* DRINK LIST GOES HERE */}
+          {drinkArr.map(drink => {
+            return (
+              <div className="col-12 col-md-">
+                <div className="card" key={drink.idDrink}>
+                  <img class="card-img-top" src={drink.strDrinkThumb} alt="Card image cap" />
+                  <div className="card-body">
+                    <h2>Name: {drink.strDrink}</h2><br />
+                    ID: {drink.idDrink}
+                    <Link to={`/cocktail-details/${drink.idDrink}`} className="btn btn-block">
+                      Get Ingredients / More Info
+                </Link>
+                  </div>
+
+
+                </div>
               </div>
-
-
-            </div>
-            </div>
-          )
-        })}
+            )
+          })}
         </div>
       </div>
 
