@@ -95,10 +95,25 @@ const getUserProfile = async (req, res) => {
   }
 };
 
+const saveDrink = (req, res) => {
+
+
+
+  User.findByIdAndUpdate(req._id, {
+    $addToSet: {savedDrinks: req.body}
+  }, {new: true})
+  .then(dbUserData => res.json(dbUserData))
+  .catch(err => {
+    console.log(err);
+    res.json(err);
+  });
+}
+
 module.exports = {
   getUserProfile,
   login,
-  register
+  register,
+  saveDrink
 };
 
 

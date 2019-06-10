@@ -12,6 +12,10 @@ export const getUserProfile = () => {
   return axios.get("/api/user")
 }
 
+export const saveDrink = (drinkData) => {
+  return axios.post('/api/user/save-drink', drinkData);
+}
+
 // import { getRandomCocktail } from 'path to api.js'
 // usage => getRandomCocktail().then().catch()
 export const getRandomCocktail = () => {
@@ -51,6 +55,6 @@ export default {
   registerInfo,
   getRandomCocktail,
   getChosenCocktail,
-  getCocktailSearch
-
+  getCocktailSearch,
+  saveDrink
 };

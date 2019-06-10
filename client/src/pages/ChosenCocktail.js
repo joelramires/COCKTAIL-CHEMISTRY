@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getChosenCocktail } from '../utils/api';
+import { getChosenCocktail, saveDrink } from '../utils/api';
 
 function ChosenCocktail(props) {
   const [cocktailDataObj, setCocktailDataObj] = useState({
@@ -17,6 +17,15 @@ function ChosenCocktail(props) {
     console.log(props);
     handleGetChosenCocktail(props.match.params.id || "");
   }, []);
+
+  function handleSaveDrink() {
+    saveDrink(cocktailDataObj)
+      .then(({data}) => {
+        console.log(data);
+      })
+      .catch(err => console.log(err));
+  }
+
 
   function handleGetChosenCocktail(drinkID) {
     getChosenCocktail(drinkID)
@@ -73,6 +82,11 @@ function ChosenCocktail(props) {
                 )
               })}
             </ul>
+            <button 
+            onClick={handleSaveDrink}
+            className="btn btn-block btn-success">
+              Save This Drink
+            </button>
           </div>
           
         </div>

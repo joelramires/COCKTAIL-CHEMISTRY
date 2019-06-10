@@ -25,7 +25,8 @@ const UserSchema = new Schema({
     type: String, 
     trim: true,
     required: true,
-  }
+  },
+  savedDrinks: []
 });
 
 UserSchema.pre('save', function createPassword(next) {

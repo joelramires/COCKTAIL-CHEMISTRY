@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getRandomCocktail } from '../utils/api';
+import { getRandomCocktail, saveDrink } from '../utils/api';
 
 function RandomCocktail() {
   // cocktailDataObj === current state
@@ -51,6 +51,14 @@ function RandomCocktail() {
     }
   }
 
+  function handleSaveDrink() {
+    saveDrink(cocktailDataObj)
+      .then(({data}) => {
+        console.log(data);
+      })
+      .catch(err => console.log(err));
+  }
+
   return (
     <React.Fragment>
       <div className="col-12 col-md-6" style={style.randomCard} id= "randomCard">
@@ -70,6 +78,11 @@ function RandomCocktail() {
             </ul>
   </div>
           <button onClick={handleGetRandomCocktail} type="submit" className="btn btn-block btn-primary">Random Cocktail</button>
+          <button 
+            onClick={handleSaveDrink}
+            className="btn btn-block btn-success">
+              Save This Drink
+            </button>
         </div>
       </div>
     </React.Fragment>
