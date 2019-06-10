@@ -37,6 +37,8 @@ const login = async (req, res) => {
   // get email and password out of req.body
   const { email, password } = req.body;
 
+  console.log(req.body);
+
   // find user based on email
   const [findUserErr, userInfo] = await handle(User.findOne({ email }));
 
@@ -46,6 +48,7 @@ const login = async (req, res) => {
       error: 'Internal error, try again'
     });
   } else if (!userInfo) {
+    console.log("no user found!")
     res.status(401).json({
       error: 'Incorrect email'
     });
@@ -54,10 +57,12 @@ const login = async (req, res) => {
     const [pwErr, same] = await handle(userInfo.isCorrectPassword(password));
 
     if (pwErr) {
+      console.log(pwErr);
       res.status(500).json({
         error: 'Internal error please try again!'
       });
     } else if (!same) {
+      console.log("incorrect password");
       res.status(401).json({
         error: 'Incorrect password!'
       });
@@ -73,7 +78,7 @@ const login = async (req, res) => {
       });
 
       // respond with web token to the front end
-      res.status(200).json(token);
+      res.cookie("token", token, {httpOnly: true}).status(200).json(token);
     }
   }
 };

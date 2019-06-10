@@ -44,11 +44,17 @@ function RandomCocktail() {
     })
     .catch(err => (console.log(err)))
   }
+  const style = {
+    randomCard: {
+      marginLeft: 270
+    
+    }
+  }
 
   return (
     <React.Fragment>
-      <div className="col-12 col-md-4">
-        <div className="card">
+      <div className="col-12 col-md-6" style={style.randomCard} id= "randomCard">
+        <div className="card" >
           <img class="card-img-top" src={cocktailDataObj.image} alt="Card image cap" />
           <div className="card-body">
             <h2>Name: {cocktailDataObj.name}</h2>

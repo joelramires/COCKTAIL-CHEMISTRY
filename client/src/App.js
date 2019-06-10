@@ -1,20 +1,25 @@
 import React from 'react';
-import LoginForm from './pages/Form'
 import RandomCocktail from './pages/RandomCocktail';
-import ChosenCocktail from './pages/ChosenCocktail'
 import CocktailSearch from './pages/CocktailSearch'
+import NavBar from './components/NavBar'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Jumbotron from './components/jumbotron'
+import Form from './pages/Form'
 
 
 function App() {
 
 
   return (
-    <React.Fragment>
-    <LoginForm />
-    <RandomCocktail/>
-    <ChosenCocktail/>
-    <CocktailSearch/>
-    </React.Fragment>
+    <Router>
+      <React.Fragment>
+        <NavBar />
+        <Jumbotron />
+        <Route exact path="/RandomCocktail" component={RandomCocktail} />
+        <Route exact path="/CocktailSearch" component={CocktailSearch} />
+        <Route exact path="/Form" component={Form} />
+      </React.Fragment>
+    </Router>
   );
 }
 

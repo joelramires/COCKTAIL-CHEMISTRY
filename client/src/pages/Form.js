@@ -9,13 +9,20 @@ function LoginForm() {
   function handleSetActiveForm(formName) {
     setActiveForm(formName);
   }
-
+const style = {
+  login: {
+    marginLeft: 270
+  
+  }
+}
   
 
   return (
     <React.Fragment>
-      <div className="col-12 col-md-4">
-        <div className="border p-2 rounded" id="logup">
+      
+      <div className="col-12 col-md-6" style={style.login}>
+      
+        <div className="border p-2 rounded" id="login">
           <h3 id="right-column-title" className="text-center">Login/Sign Up!</h3>
           <div>
             <div className="list-group list-group-horizontal-md mt-3" id="user-tabs" role="tablist">

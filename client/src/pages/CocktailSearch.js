@@ -75,12 +75,12 @@ function CocktailSearch() {
           <button type="submit" className="btn btn-block btn-primary">Get Drink</button>
         </form>
       </div>
-      <div className="col-12 col-md-8">
+      <div className="col-12 col-md-6">
         <div className="row">
         {/* DRINK LIST GOES HERE */}
         {drinkArr.map(drink => {
           return (
-            <div className="col-12 col-md-3">
+            <div className="col-12 col-md-">
               <div className="card" key={drink.idDrink}>
               <img class="card-img-top" src={drink.strDrinkThumb} alt="Card image cap" />
               <div className="card-body">
