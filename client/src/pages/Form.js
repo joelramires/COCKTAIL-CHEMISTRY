@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Login from '../components/Login';
 import Signup from '../components/Signup'
+import { Redirect } from 'react-router-dom';
 
 function LoginForm() {
 
@@ -9,19 +10,27 @@ function LoginForm() {
   function handleSetActiveForm(formName) {
     setActiveForm(formName);
   }
-const style = {
-  login: {
-    marginLeft: 270
-  
+  const style = {
+    login: {
+      marginLeft: 270
+
+    }
   }
-}
+
+  const [loggedInStatus, setLoggedInStatus] = useState(false);
+
+  if (loggedInStatus) {
+    return <Redirect to={{
+      pathname: "/user-profile",
+    }} />
+  }
   
 
   return (
     <React.Fragment>
-      
+
       <div className="col-12 col-md-6" style={style.login}>
-      
+
         <div className="border p-2 rounded" id="login">
           <h3 id="right-column-title" className="text-center">Login/Sign Up!</h3>
           <div>
@@ -39,9 +48,9 @@ const style = {
             <div className="tab-content my-4" id="forms">
 
               {activeForm === "login" ? (
-                <Login activeForm={activeForm}/>
+                <Login activeForm={activeForm} setLoggedInStatus={setLoggedInStatus} />
               ) : (
-                  <Signup activeForm={activeForm} setActiveForm={setActiveForm}/>
+                  <Signup activeForm={activeForm} setActiveForm={setActiveForm} />
                 )}
 
             </div>

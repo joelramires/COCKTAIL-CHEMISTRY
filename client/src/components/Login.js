@@ -28,6 +28,7 @@ class Login extends Component {
       .then(({data: token}) => {
         alert(token);
         this.setState({token})
+        this.props.setLoggedInStatus(true);
       })
       .catch(err => console.log(err));
   }

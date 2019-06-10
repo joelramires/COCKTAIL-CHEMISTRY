@@ -9,7 +9,7 @@ export const registerInfo = userData => {
 };
 
 export const getUserProfile = () => {
-  return axios.get("/api/user/getUserProfile")
+  return axios.get("/api/user")
 }
 
 // import { getRandomCocktail } from 'path to api.js'

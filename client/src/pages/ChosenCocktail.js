@@ -38,19 +38,27 @@ function ChosenCocktail(props) {
         cocktailDataObj.measurements = Object.entries(drink).filter(entry => {
           if (entry[0].includes("Measure") && entry[1] !== 0) {
             return entry
-          } 
+          }
         }).map(measurement => measurement[1]);
-        
+
 
         console.log(cocktailDataObj);
         setCocktailDataObj(cocktailDataObj);
       })
       .catch(err => (console.log(err)))
-  }
 
+    
+
+  }
+  const style = {
+    chosenCard: {
+      marginLeft: 270
+
+    }
+  }
   return (
     <React.Fragment>
-      <div className="col-12 col-md-6">
+      <div className="col-12 col-md-6" style={style.chosenCard} id="chosenCard">
         <div className="card">
           <img class="card-img-top" src={cocktailDataObj.image} alt="Card image cap" />
           <div className="card-body">
@@ -61,12 +69,12 @@ function ChosenCocktail(props) {
             <ul className="list-group list-group-flush">
               {cocktailDataObj.ingredients.map((ingredient, index) => {
                 return (
-                  <li key={ingredient} className="list-group-item">{cocktailDataObj.measurements[index] ? `${cocktailDataObj.measurements[index]} - ` : "" }{ingredient}</li>
+                  <li key={ingredient} className="list-group-item">{cocktailDataObj.measurements[index] ? `${cocktailDataObj.measurements[index]} - ` : ""}{ingredient}</li>
                 )
               })}
             </ul>
           </div>
-          <button onClick={handleGetChosenCocktail} type="submit" className="btn btn-block btn-primary">Get Drink</button>
+          
         </div>
       </div>
     </React.Fragment>
