@@ -12,12 +12,13 @@ const style={
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat'
     
-  }  
+  } 
+ 
 }
   return (
-  <div className="jumbotron jumbotron-fluid text-center bg-dark " id="bg" style={style.bg}>
+  <div className="jumbotron jumbotron-fluid text-center" id="bg" style={style.bg}>
     <div className= "container">
-     <h1>Drinktender</h1>
+     <h1 className="text-info bg-light d-inline-flex">Cocktail Chemistry</h1>
     </div>
   </div>
 

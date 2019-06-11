@@ -25,7 +25,7 @@ const register = (req, res) => {
     } else {
       res.status(200).json({
         success: true,
-        message: 'Welcome to fantasy football mojo!'
+        message: 'Welcome to Cocktail Chemistry!'
       });
     }
   });

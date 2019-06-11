@@ -77,7 +77,7 @@ function RandomCocktail() {
               })}
             </ul>
   </div>
-          <button onClick={handleGetRandomCocktail} type="submit" className="btn btn-block btn-primary">Random Cocktail</button>
+          <button onClick={handleGetRandomCocktail} type="submit" className="btn btn-block btn-info">Random Cocktail</button>
           <button 
             onClick={handleSaveDrink}
             className="btn btn-block btn-success">

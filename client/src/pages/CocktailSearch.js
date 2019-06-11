@@ -67,13 +67,13 @@ function CocktailSearch() {
   return (
     <div className="row">
 
-      <div className="col-12 col-md-4">
+      <div className="col-6 col-md-3">
         <form onSubmit={handleGetCocktailSearch}>
-          <div className="form-group ">
-            <input type="text" placeholder="Search for a Cocktail" value={userInputState}
+          <div className="form-group w-100">
+            <input type="text" className="form-control" placeholder="Search for a Cocktail" value={userInputState}
               onChange={(e) => setUserInputState(e.target.value)} />
           </div>
-          <button type="submit" className="btn btn-block btn-primary">Get Drink</button>
+          <button type="submit" className="btn btn-block btn-info pl-1 pr-1">Get Drink</button>
         </form>
       </div>
       <div className="col-12 col-md-6">
@@ -81,12 +81,11 @@ function CocktailSearch() {
           {/* DRINK LIST GOES HERE */}
           {drinkArr.map(drink => {
             return (
-              <div className="col-12 col-md-">
+              <div className="col-10 col-md-12">
                 <div className="card" key={drink.idDrink}>
                   <img class="card-img-top" src={drink.strDrinkThumb} alt="Card image cap" />
                   <div className="card-body">
-                    <h2>Name: {drink.strDrink}</h2><br />
-                    ID: {drink.idDrink}
+                    <h2>Name: {drink.strDrink}</h2>
                     <Link to={`/cocktail-details/${drink.idDrink}`} className="btn btn-block">
                       Get Ingredients / More Info
                 </Link>
