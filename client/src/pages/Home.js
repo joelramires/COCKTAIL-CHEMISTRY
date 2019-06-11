@@ -8,7 +8,7 @@ function Home() {
         fontSize: "large"
       }}>
       <div className="row">
-        <div className="col-12 col-md-8">
+        <div className="col-12 col-md-12 text-center">
           <h2 className="display-4 my-2">Welocme to Cocktail Chemistry</h2>
           <p>Learn how to make thousands of different cocktails</p>
           <p>Create an account and save your favorite cocktails</p>
